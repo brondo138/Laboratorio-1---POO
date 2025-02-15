@@ -1,0 +1,9 @@
+Crear un programa que ayude a administrar una tienda online. 
+
+Debe manejar los diferentes tipos de productos por categoría, el programa debe mostrar el listado de productos, editarlos y eliminarlos. 
+
+Debe poder agregar, editar y eliminar categorías. 
+
+Debe crear las funciones necesarias para calcular los descuentos de los productos al momento de realizar la venta. 
+
+Debe mostrar los 3 productos más vendidos.
