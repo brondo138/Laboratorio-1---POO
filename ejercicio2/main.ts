@@ -1,88 +1,39 @@
-import * as readline from 'readline';
+import { rd } from "./readline";
+import { Vehiculo } from "./vehiculo";
+import { Automovil } from "./automovil";
+import { Motocicleta } from "./motocicleta";
 
-// Clase abstracta Vehiculo
-abstract class Vehiculo {
-    protected marca: string;
-    protected modelo: string;
-    protected anio: number;
-
-    constructor(marca: string, modelo: string, anio: number) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
-    }
-
-    // implementando las subclases
-    abstract obtenerDetalles(): string;
-}
-
-// Clase Automovil que hereda de Vehiculo
-class Automovil extends Vehiculo {
-    private numeroPuertas: number;
-
-    constructor(marca: string, modelo: string, anio: number, numeroPuertas: number) {
-        super(marca, modelo, anio);
-        this.numeroPuertas = numeroPuertas;
-    }
-
-    obtenerDetalles(): string {
-        return `Automovil: ${this.marca} ${this.modelo} (${this.anio}), ${this.numeroPuertas} puertas.`;
-    }
-}
-
-// Clase Motocicleta que hereda de Vehiculo
-class Motocicleta extends Vehiculo {
-    private tipo: string;
-
-    constructor(marca: string, modelo: string, anio: number, tipo: string) {
-        super(marca, modelo, anio);
-        this.tipo = tipo;
-    }
-
-    obtenerDetalles(): string {
-        return `Motocicleta: ${this.marca} ${this.modelo} (${this.anio}), Tipo: ${this.tipo}.`;
-    }
-}
-
-// Configuración de readline para leer desde la consola
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-function preguntar(pregunta: string): Promise<string> {
-    return new Promise((resolve) => {
-        rl.question(pregunta, resolve);
-    });
-}
-
-// Funcion principal para ejecutar el programa
 async function main() {
     let vehiculos: Vehiculo[] = [];
+    let marca:string, modelo:string, anio:number; 
 
-    let tipoVehiculo = await preguntar("Ingrese el tipo de vehiculo (automovil/motocicleta): ");
+    let tipoVehiculo = Number((await rd.question("Ingrese el tipo de vehiculo \n1.Automovil\n2.Motocicleta\n\nOpcion: ")).trim());
     
-    let marca = await preguntar("Ingrese la marca del vehiculo: ");
-    let modelo = await preguntar("Ingrese el modelo del vehiculo: ");
-    let anio = parseInt(await preguntar("Ingrese el año del vehiculo: "));
-
-    if (tipoVehiculo.toLowerCase() === "automovil") {
-        let numeroPuertas = parseInt(await preguntar("Ingrese el numero de puertas: "));
-        vehiculos.push(new Automovil(marca, modelo, anio, numeroPuertas));
-    } else if (tipoVehiculo.toLowerCase() === "motocicleta") {
-        let tipoMoto = await preguntar("Ingrese el tipo de motocicleta (deportiva/crucero): ");
-        vehiculos.push(new Motocicleta(marca, modelo, anio, tipoMoto));
-    } else {
-        console.log("Tipo de vehiculo no valido.");
-        rl.close();
-        return;
+    switch (tipoVehiculo) {
+        case 1:
+            marca = (await rd.question("Ingrese la marca del vehiculo: ")).trim();
+            modelo = (await rd.question("Ingrese el modelo del vehiculo: ")).trim();
+            anio = parseInt((await rd.question("Ingrese el año del vehiculo: ")).trim());        
+            let numeroPuertas:number = parseInt((await rd.question("Ingrese el numero de puertas: ")).trim());
+            vehiculos.push(new Automovil(marca, modelo, anio, numeroPuertas));
+            break;
+        case 2: 
+            marca = (await rd.question("Ingrese la marca de la motocicleta: ")).trim();
+            modelo = (await rd.question("Ingrese el modelo de la motocicleta: ")).trim();
+            anio = parseInt((await rd.question("Ingrese el año de la motocicleta: ")).trim());   
+            let tipoMoto:string = (await rd.question("Ingrese el tipo de motocicleta (deportiva/crucero): ")).trim();
+            vehiculos.push(new Motocicleta(marca, modelo, anio, tipoMoto));
+            break;
+    
+        default:
+            console.log("Tipo de vehiculo no valido.");
+            rd.close();
+            break;
     }
 
-    // Mostrar detalles de los vehiculos registrados
-    vehiculos.forEach(v => console.log(v.obtenerDetalles()));
+    vehiculos.forEach(vehiculo => console.log(vehiculo.obtenerDetalles()));
 
-    rl.close();
+    rd.close();
 }
 
-// Ejecutar la funcion principal
 main();

@@ -6,12 +6,10 @@ export async function Catalogo() {
     console.log("\nBienvenido usuario, estas son las categorías disponibles:");
     
     categorias.forEach((categoria, index) => {
-        console.log(`${index + 1}. ${categoria.nombre}`);
+        console.log(`${index + 1}.${categoria.nombre}`);
     });
-    
-    console.log(`${categorias.length + 1}. Salir`);
-    
-    let opcion = Number((await rd.question("\nOpción: ")).trim());
+
+    let opcion = Number((await rd.question(`${categorias.length + 1}.Salir\nOpción: `)).trim());
     
     if (opcion === categorias.length + 1) {
         return;

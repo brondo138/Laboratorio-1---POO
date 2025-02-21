@@ -1,0 +1,6 @@
+Para el segundo ejercicio es libre de crear el programa que usted quiera pero tiene que cumplir con las siguientes condiciones.
+
+-Debe contener herencia (puede ser cualquier tipo de herencia)
+-Debe contener polimorfismo (puede ser cualquier tipo de polimorfismo)
+-Debe contener al menos una clase abstracta y un método abstracto
+-El ejercicio que realice debe ser funcional y tener sentido. No debe usar clases al azar solo para cumplir con los requisitos

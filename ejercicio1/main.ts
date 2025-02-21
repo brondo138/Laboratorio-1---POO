@@ -1,6 +1,6 @@
 import { rd } from "./readline"
 import { Catalogo } from './catalogo';
-
+import { administradorMenu } from "./administradorMenu";
 
 
 async function main() {
@@ -16,7 +16,7 @@ async function main() {
             case 2:
                 let contra = (await rd.question("\nIngrese la contraseña: ")).trim();
                 if (contra == "123") {
-                    
+                    await administradorMenu();
                 }else{console.log("\nError: contraseña incorrecta\n");}
                 break;
             case 3:
@@ -25,7 +25,7 @@ async function main() {
                 break
         
             default:
-                console.log("\nError: Ingresa un dato valido\n  ");
+                console.log("\nError: Ingresa una opcion valida\n  ");
                 break;
         }
 
