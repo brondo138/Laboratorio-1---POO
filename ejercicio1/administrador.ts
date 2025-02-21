@@ -10,11 +10,13 @@ export async function administradorCategorias() {
         switch (opcion) {
             case 1:
                 let categoriaNombre = (await rd.question("\nIngresa el nombre de la categoria: ")).trim();
-                categorias.push(new Categoria(categorias.length + 1,categoriaNombre));
-            console.log("Las categorias actuales son:");
-            categorias.forEach((categoria, index) => {
-                console.log(`${index + 1}. ${categoria.nombre}`);
-            });
+                let nuevoId = categorias.length > 0 ? Math.max(...categorias.map(categorias => categorias.id)) + 1 : 1;
+            
+                categorias.push(new Categoria(nuevoId,categoriaNombre));
+                console.log("Las categorias actuales son:");
+                categorias.forEach((categoria, index) => {
+                    console.log(`${index + 1}. ${categoria.nombre}`);
+                });
                 break;
 
             case 2: 
@@ -78,11 +80,45 @@ export async function administradorCategorias() {
     } while (condition);
 }
 
-export async function administradorProductos() {
+export async function administradorProductosMenu() {
     let condition = true;
 
     do {
+        console.log(`De que categoria quieres modificar los productos`);
+        categorias.forEach((categoria, index) => {
+            console.log(`${index + 1}.${categoria.nombre}`);
+        });
+    
+        let opcion = Number((await rd.question(`${categorias.length + 1}.Salir\nOpción: `)).trim());
         
-        let opcion = Number((await rd.question("\nQue desea hacer\n1.Agregar producto\n2.Editar producto\n3.Eliminar producto\n4.Volver\n\nOpcion: ")).trim());
+        if (opcion === categorias.length + 1) {
+            return;
+        }
+        else if (opcion >= 1 && opcion <= categorias.length) {
+            let categoriaElegida = categorias[opcion - 1];
+            await administradorProductos(categoriaElegida);
+        }
+        else {
+            console.log("\nError: Ingresa una categoría válida\n");
+        }
+
+        
     } while (condition);
+}
+
+async function administradorProductos(categoria:any) {
+    let condition = true;
+    let opcion = Number((await rd.question(`\nCategoria ${categoria.nombre}:Que desea hacer\n1.Agregar producto\n2.Editar producto\n3.Eliminar producto\n4.Volver\n\nOpcion: `)).trim());
+
+    switch (opcion) {
+        case 1:
+            let productoNombre = (await rd.question("")).trim();
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
 }

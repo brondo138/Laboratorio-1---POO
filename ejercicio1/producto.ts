@@ -1,24 +1,6 @@
 import { rd } from "./readline";
 import { categorias, productos, Categoria } from "./bd";
 
-export async function comprar(producto: any) {
-    console.log();
-    producto.mostrarInfo();
-
-    let opcion = Number((await rd.question(`\nDesea comprarlo\n1.Si\n2.No\n\nOpcion: `)).trim());
-    switch (opcion) {
-        case 1:
-            console.log();
-            producto.comprar();
-            break;
-        case 2: 
-            return;
-            break;
-    
-        default:
-            break;
-    }
-}
 
 export async function mostrarProductos(categoria: any) {
     let productoFiltrado = productos.filter(producto => producto.Categoria == categoria.id);
@@ -43,5 +25,24 @@ export async function mostrarProductos(categoria: any) {
     
     else {
         console.log("\nError: Ingresa un producto válido\n");
+    }
+}
+
+export async function comprar(producto: any) {
+    console.log();
+    producto.mostrarInfo();
+
+    let opcion = Number((await rd.question(`\nDesea comprarlo\n1.Si\n2.No\n\nOpcion: `)).trim());
+    switch (opcion) {
+        case 1:
+            console.log();
+            producto.comprar();
+            break;
+        case 2: 
+            return;
+            break;
+    
+        default:
+            break;
     }
 }

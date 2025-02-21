@@ -1,5 +1,5 @@
 import { rd } from "./readline";
-import { administradorCategorias, administradorProductos } from "./administrador";
+import { administradorCategorias, administradorProductosMenu } from "./administrador";
 
 export async function administradorMenu() {
     let condition = true;
@@ -11,7 +11,7 @@ export async function administradorMenu() {
                 await administradorCategorias();
                 break;
             case 2:
-                await administradorProductos();
+                await administradorProductosMenu();
                 break;
             case 3:
                 condition = false;
