@@ -27,15 +27,11 @@ Este programa permite administrar una tienda en línea, gestionando productos y 
    ```
 3. Instala las dependencias necesarias:
    ```sh
-   npm install
+   npm i ts-node
    ```
-4. Compila el código TypeScript a JavaScript:
+4. Ejecuta el programa:
    ```sh
-   tsc
-   ```
-5. Ejecuta el programa:
-   ```sh
-   node dist/main.js
+   ts-node main.ts
    ```
 
 ### 🔑 **Modo Administrador**
@@ -91,7 +87,7 @@ Este programa gestiona vehículos, permitiendo la administración de **automóvi
 
 - **TypeScript** 📌
 - **Node.js** 📌
-- **readline-sync** para la entrada de datos en consola 📌
+- **readline** para la entrada de datos en consola 📌
 
 ## 📌 **Contribución**
 
