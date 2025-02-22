@@ -19,7 +19,7 @@ Este programa permite administrar una tienda en línea, gestionando productos y 
 
 1. Clona este repositorio:
    ```sh
-   git clone https://github.com/tuusuario/nombre-repositorio.git
+   git clone https://github.com/brondo138/Laboratorio-1---POO.git
    ```
 2. Entra en la carpeta del proyecto:
    ```sh
@@ -65,6 +65,7 @@ Este programa gestiona vehículos, permitiendo la administración de **automóvi
  ├── 📄 readline.ts
  ├── 📄 vehiculo.ts
 ```
+mas las dependencias que necesita cada ejercicio
 
 ### 🛠️ **Instalación y ejecución**
 
@@ -72,13 +73,13 @@ Este programa gestiona vehículos, permitiendo la administración de **automóvi
    ```sh
    cd ejercicio2
    ```
-2. Compila el código TypeScript:
+2. Instala las dependencias necesarias:
    ```sh
-   tsc
+   npm i ts-node
    ```
 3. Ejecuta el programa:
    ```sh
-   node dist/main.js
+   ts-node main.ts
    ```
 
 ---
@@ -88,10 +89,6 @@ Este programa gestiona vehículos, permitiendo la administración de **automóvi
 - **TypeScript** 📌
 - **Node.js** 📌
 - **readline** para la entrada de datos en consola 📌
-
-## 📌 **Contribución**
-
-Si deseas mejorar este proyecto, ¡las contribuciones son bienvenidas! Abre un issue o un pull request en este repositorio.
 
 ## 📌 **Autor**
 
