@@ -6,7 +6,7 @@ export class Categoria{
     constructor (public id: number, public nombre:string){}
 }
 
-class Producto implements Descuento{
+export class Producto implements Descuento{
     constructor( public Categoria:number, public nombre:string, public precio:number, public oferta: number){}
 
     descuento(): number {
@@ -45,6 +45,12 @@ let productos: Producto[] = [
     new Producto(3,"Laptop",1500,0),
     new Producto(1,"Laptop",1500,0)
 ]
+
+export function mostrar(lista:any[]){
+    lista.forEach((dato, index) => {
+        console.log(`${index + 1}.${dato.nombre}`);
+    });
+}
 
 export function eliminarProductos(categoria:number){
     productos = productos.filter(producto => producto.Categoria !== categoria);

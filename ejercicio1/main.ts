@@ -3,7 +3,7 @@ import { Catalogo } from './catalogo';
 import { administradorMenu } from "./administradorMenu";
 
 
-async function main() {
+export async function main() {
     let condition = true;
     do {
         
@@ -20,8 +20,8 @@ async function main() {
                 }else{console.log("\nError: contraseña incorrecta\n");}
                 break;
             case 3:
-                condition = false;
-                rd.close();
+                condition = false;  
+                process.exit(0);
                 break
         
             default:
